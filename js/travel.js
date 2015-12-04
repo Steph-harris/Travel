@@ -14,55 +14,68 @@ $(document).ready(function(){
     interval: 3000
   });
 
-//show search results 
-  
-$("#btnsearch").on("click", function(e){
-  e.preventDefault();
-  amenResult();
-  var city = $("#city").val();
-  if (city === ""){
-    $(".alert").show();
-    return;
-  } else if (city === "London"){
-    $(".listing.ld").show();
-  }else if (city === "Paris"){
-    $(".listing.pa").show();
-  }else if (city === "Tokyo"){
-    $(".listing.tk").show();
-  }else if (city === "New York City"){
-    $(".listing.ny").show();
-  }else if (city === "Hong Kong"){
-    $(".listing.hk").show();
-  }
+  //show search results 
+    
+  $("#btnsearch").on("click", function(e){
+    e.preventDefault();
+    debugger
+    $(".listing").hide();
+    amenResult();
+    var city = $("#city").val();
+    if (city === ""){
+      $(".alert").show();
+      return;
+    } else if (city === "London"){
+      $(".listing.ld").show();
+    }else if (city === "Paris"){
+      $(".listing.pa").show();
+    }else if (city === "Tokyo"){
+      $(".listing.tk").show();
+    }else if (city === "New York City"){
+      $(".listing.ny").show();
+    }else if (city === "Hong Kong"){
+      $(".listing.hk").show();
+    }
+  });
 
-});
+  $(".freebies input").on("click", function(){
+    var free = $(".freebies input");
+
+    if(this.className != "clicked"){
+    free.addClass("clicked");
+    } else {
+      free.removeClass("clicked")
+    }
+  });
 
   //amenity result
   function amenResult () {
-    $("#op1").one("click", function(){
-      var freebf = "Free Breakfast";
-      $(".amenities").append(freebf + ", ");
-    });
-    $("#op2").one("click", function(){
-      var pool = "Pool";
-      $(".amenities").append(pool + ", ");
-    });
-    $("#op3").one("click", function(){
-      var freepark = "Free Parking";
-      $(".amenities").append(freepark + ", ");
-    });
-    $("#op4").one("click", function(){
-      var freewifi = "Free Wifi";
-      $(".amenities").append(freewifi + ", ");
-    });
-    $("#op5").one("click", function(){
-      var laundry = "Laundry";
-      $(".amenities").append(laundry + ", ");
-    });
-    $("#op6").one("click", function(){
-      var spa = "Spa";
-      $(".amenities").append(spa + ", ");
-    });
+    var freebf = " Free Breakfast";
+    var pool = "Pool";
+    var freepark = "Free Parking";
+    var freewifi = "Free Wifi";
+    var laundry = "Laundry";
+    var spa = "Spa";
+
+    
+    if ($("#op1").hasClass("clicked")){    
+      $(".amenities").append(freebf + " ");
+    }debugger
+    // else if ($("#op2").hasClass("clicked")){      
+    //   $(".amenities").append(pool + " ");
+    // }
+    // else if ($("#op3").hasClass("clicked")){   
+    //   $(".amenities").append(freepark + ", ");
+    // });
+    // else if ($("#op4").hasClass("clicked")){     
+    //   $(".amenities").append(freewifi + ", ");
+    // });
+    // else if ($("#op5").hasClass("clicked")){     
+    //   $(".amenities").append(laundry + ", ");
+    // });
+    // else if ($("#op6").hasClass("clicked")){    
+    //   $(".amenities").append(spa);
+    // });
   };
 
 
@@ -83,5 +96,4 @@ $("#btnsearch").on("click", function(e){
   $("#moreOptions").on("click", function(){
     $(".btn-group2").fadeToggle();
   });
-
 });
