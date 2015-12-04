@@ -20,6 +20,7 @@ $(document).ready(function(){
     e.preventDefault();
     debugger
     $(".listing").hide();
+    $(".amenities").empty();
     amenResult();
     var city = $("#city").val();
     if (city === ""){
